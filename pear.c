@@ -1,3 +1,4 @@
+#include <ctype.h>
 #include <stdbool.h>
 #include <stddef.h>
 #include <string.h>
@@ -21,6 +22,12 @@ static inline bool charIsExcluded(char c, const char* exclude) {
 static inline void addptr(const char** ptr, const char* base, size_t offset) {
     if (ptr != NULL) {
         (*ptr) = base + offset;
+    }
+}
+
+void skipShiteSpace(const char** src) {
+    while (isspace(**src)) {
+        (*src)++;
     }
 }
 

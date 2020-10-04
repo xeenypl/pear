@@ -4,6 +4,13 @@
 
 #include "pear.h"
 
+static void test_skipShiteSpace(void) {
+    const char* test_src = " \t\nx";
+    const char* test_end = test_src;
+    skipShiteSpace(&test_end);
+    assert((&test_src[3]) == test_end);
+}
+
 static void test_matchChar(void) {
     const char* test_src = "ab";
     const char* test_end;
@@ -31,6 +38,7 @@ static void test_matchChars(void) {
 }
 
 int main(void) {
+    test_skipShiteSpace();
     test_matchChar();
     test_matchChars();
     return 0;

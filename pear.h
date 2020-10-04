@@ -3,6 +3,8 @@
 
 #include <stdbool.h>
 
+void skipShiteSpace(const char** src);
+
 bool matchChar(
     const char*  src,
     const char** end,
