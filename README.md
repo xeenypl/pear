@@ -1,2 +1,2 @@
 # pear
-Pimple parser library in c.
+Simple parser library in c.
