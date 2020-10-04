@@ -36,6 +36,13 @@ void skipWhiteSpace(const char** src) {
     }
 }
 
+void skipLine(const char** src) {
+    while ((**src) != '\n') {
+        (*src)++;
+    }
+    line_number++;
+}
+
 int getLineNumber(void) {
     return line_number;
 }
