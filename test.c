@@ -4,10 +4,10 @@
 
 #include "pear.h"
 
-static void test_skipShiteSpace(void) {
+static void test_skipWhiteSpace(void) {
     const char* test_src = " \t\nx";
     const char* test_end = test_src;
-    skipShiteSpace(&test_end);
+    skipWhiteSpace(&test_end);
     assert((&test_src[3]) == test_end);
     assert(getLineNumber() == 2);
     resrtLineNumber();
@@ -40,8 +40,16 @@ static void test_matchChars(void) {
     assert((&test_src[1]) == test_end);
 }
 
+static void test_matchQuote(void) {
+    const char* test_src = "'ab'";
+    const char* test_end;
+    assert(matchQuote(test_src, NULL, '"', '\\') == false);
+    assert(matchQuote(test_src, &test_end, '\'', '\\') == true);
+    assert((&test_src[4]) == test_end);
+}
+
 int main(void) {
-    test_skipShiteSpace();
+    test_skipWhiteSpace();
     test_matchChar();
     test_matchChars();
     return 0;

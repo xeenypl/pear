@@ -27,7 +27,7 @@ static inline void addptr(const char** ptr, const char* base, size_t offset) {
     }
 }
 
-void skipShiteSpace(const char** src) {
+void skipWhiteSpace(const char** src) {
     while (isspace(**src)) {
         if ((**src) == '\n') {
             line_number++;
@@ -45,10 +45,10 @@ void resrtLineNumber(void) {
 }
 
 bool matchChar(
-    const char* src,
+    const char*  src,
     const char** end,
-    char c,
-    const char* exclude
+    char         c,
+    const char*  exclude
 ) {
     if (c == (*src)) {
         if (exclude == NULL) {
@@ -78,4 +78,31 @@ bool matchChars(
             return true;
         }
     }
+    return false;
+}
+
+bool matchQuote(
+    const char*  src,
+    const char** end,
+    char         quote,
+    char         escape
+) {
+    if ((*src) == '"') {
+        size_t length = 1;
+        if (escape != 0) {
+            while (!(((src[length] == quote) && (src[length - 1] != quote))
+                  || ((src[length] == quote) && (src[length - 1] == quote)
+                                             && (src[length - 2] == quote)))) {
+                length++;
+            }
+        } else {
+            while (src[length] != quote) { 
+                length++;
+            }
+        }
+        length++;
+        addptr(end, src, length);
+        return true;
+    }
+    return false;
 }

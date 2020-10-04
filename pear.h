@@ -3,7 +3,7 @@
 
 #include <stdbool.h>
 
-void skipShiteSpace(const char** src);
+void skipWhiteSpace(const char** src);
 
 int getLineNumber(void);
 void resrtLineNumber(void);
@@ -20,6 +20,13 @@ bool matchChars(
     const char** end,
     const char*  str,
     const char*  exclude
+);
+
+bool matchQuote(
+    const char*  src,
+    const char** end,
+    char         quote,
+    char         escape
 );
 
 #endif
