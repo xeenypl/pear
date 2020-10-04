@@ -1,5 +1,6 @@
 #include <stdbool.h>
 #include <stddef.h>
+#include <string.h>
 
 // for debug
 #include <stdio.h>
@@ -39,4 +40,22 @@ bool matchChar(
         }
     }
     return false;
+}
+
+bool matchChars(
+    const char*  src,
+    const char** end,
+    const char*  str,
+    const char*  exclude
+) {
+    size_t len = strlen(str);
+    if (strncmp(src, str, len) == 0) {
+        if (exclude == NULL) {
+            addptr(end, src, len);
+            return true;
+        } else if (charIsExcluded((*(src + 1)), exclude)) {
+            addptr(end, src, len);
+            return true;
+        }
+    }
 }
