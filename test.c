@@ -41,11 +41,14 @@ static void test_matchStrong(void) {
 }
 
 static void test_matchQuote(void) {
-    const char* test_src = "'ab'";
-    const char* test_end;
+    const char* test_src = "'ab\\''";
+    const char* test1_end;
+    const char* test2_end;
     assert(matchQuote(test_src, NULL, '"', '\\') == false);
-    assert(matchQuote(test_src, &test_end, '\'', '\\') == true);
-    assert((&test_src[4]) == test_end);
+    assert(matchQuote(test_src, &test1_end, '\'', 0) == true);
+    assert((&test_src[5]) == test1_end);
+    assert(matchQuote(test_src, &test2_end, '\'', '\\') == true);
+    assert((&test_src[6]) == test2_end);
 }
 
 int main(void) {

@@ -97,9 +97,9 @@ bool matchQuote(
     if ((*src) == quote) {
         size_t length = 1;
         if (escape != 0) {
-            while (!(((src[length] == quote) && (src[length - 1] != quote))
-                  || ((src[length] == quote) && (src[length - 1] == quote)
-                                             && (src[length - 2] == quote)))) {
+            while (!(((src[length] == quote) && (src[length - 1] != escape))
+                  || ((src[length] == quote) && (src[length - 1] == escape)
+                                             && (src[length - 2] == escape)))) {
                 length++;
             }
         } else {
