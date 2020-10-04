@@ -69,7 +69,7 @@ bool matchChar(
     return false;
 }
 
-bool matchChars(
+bool matchStrong(
     const char*  src,
     const char** end,
     const char*  str,
@@ -94,7 +94,7 @@ bool matchQuote(
     char         quote,
     char         escape
 ) {
-    if ((*src) == '"') {
+    if ((*src) == quote) {
         size_t length = 1;
         if (escape != 0) {
             while (!(((src[length] == quote) && (src[length - 1] != quote))

@@ -27,16 +27,16 @@ static void test_matchChar(void) {
     assert((&test_src[1]) == test_end);
 }
 
-static void test_matchChars(void) {
+static void test_matchStrong(void) {
     const char* test_src = "ab";
     const char* test_end;
-    assert(matchChars(test_src, NULL, "a", NULL) == true);
-    assert(matchChars(test_src, NULL, "b", NULL) == false);
-    assert(matchChars(test_src, NULL, "m", NULL) == false);
-    assert(matchChars(test_src, NULL, "a", "b") == false);
-    assert(matchChars(test_src, NULL, "a", "xb") == false);
-    assert(matchChars(test_src, NULL, "a", "x") == true);
-    assert(matchChars(test_src, &test_end, "a", NULL) == true);
+    assert(matchStrong(test_src, NULL, "a", NULL) == true);
+    assert(matchStrong(test_src, NULL, "b", NULL) == false);
+    assert(matchStrong(test_src, NULL, "m", NULL) == false);
+    assert(matchStrong(test_src, NULL, "a", "b") == false);
+    assert(matchStrong(test_src, NULL, "a", "xb") == false);
+    assert(matchStrong(test_src, NULL, "a", "x") == true);
+    assert(matchStrong(test_src, &test_end, "a", NULL) == true);
     assert((&test_src[1]) == test_end);
 }
 
@@ -51,6 +51,7 @@ static void test_matchQuote(void) {
 int main(void) {
     test_skipWhiteSpace();
     test_matchChar();
-    test_matchChars();
+    test_matchStrong();
+    test_matchQuote();
     return 0;
 }

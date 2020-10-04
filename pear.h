@@ -16,7 +16,7 @@ bool matchChar(
     const char*  exclude
 );
 
-bool matchChars(
+bool matchStrong(
     const char*  src,
     const char** end,
     const char*  str,
