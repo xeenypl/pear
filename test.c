@@ -9,6 +9,9 @@ static void test_skipShiteSpace(void) {
     const char* test_end = test_src;
     skipShiteSpace(&test_end);
     assert((&test_src[3]) == test_end);
+    assert(getLineNumber() == 2);
+    resrtLineNumber();
+    assert(getLineNumber() == 1);
 }
 
 static void test_matchChar(void) {

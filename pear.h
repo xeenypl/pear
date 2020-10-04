@@ -5,6 +5,9 @@
 
 void skipShiteSpace(const char** src);
 
+int getLineNumber(void);
+void resrtLineNumber(void);
+
 bool matchChar(
     const char*  src,
     const char** end,

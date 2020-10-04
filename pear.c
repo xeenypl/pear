@@ -8,6 +8,8 @@
 
 #include "pear.h"
 
+static int line_number = 1;
+
 static inline bool charIsExcluded(char c, const char* exclude) {
     size_t i = 0;
     while (exclude[i] != 0) {
@@ -27,8 +29,19 @@ static inline void addptr(const char** ptr, const char* base, size_t offset) {
 
 void skipShiteSpace(const char** src) {
     while (isspace(**src)) {
+        if ((**src) == '\n') {
+            line_number++;
+        }
         (*src)++;
     }
+}
+
+int getLineNumber(void) {
+    return line_number;
+}
+
+void resrtLineNumber(void) {
+    line_number = 1;
 }
 
 bool matchChar(
