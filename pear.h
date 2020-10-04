@@ -4,6 +4,7 @@
 #include <stdbool.h>
 
 void skipWhiteSpace(const char** src);
+void skipLine(const char** src);
 
 int getLineNumber(void);
 void resrtLineNumber(void);
